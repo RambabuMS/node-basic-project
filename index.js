@@ -83,7 +83,6 @@ const movies = [
 //middle ware -> Intervept -> converting body to Json
 app.use(express.json());
 
-
 const MONGO_URL = process.env.MONGO_URL;
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);
@@ -108,6 +107,16 @@ app.get("/movies", async function (request, response) {
     .find({})
     .toArray();
   response.send(movies);
+});
+
+app.get("/movies/name", async function (request, response) {
+  //response.send(movies);
+  const movies = await client
+    .db("b30wd")
+    .collection("movies")
+    .find({})
+    .toArray();
+  response.send(movies.name);
 });
 
 app.get("/movies/:id", async function (request, response) {
