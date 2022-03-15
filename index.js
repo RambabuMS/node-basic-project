@@ -83,7 +83,7 @@ const movies = [
 //middle ware -> Intervept -> converting body to Json
 app.use(express.json());
 
-// const MONGO_URL = "mongodb://localhost";
+
 const MONGO_URL = process.env.MONGO_URL;
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);
