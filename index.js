@@ -111,12 +111,12 @@ app.get("/movies", async function (request, response) {
 
 app.get("/movies/name", async function (request, response) {
   //response.send(movies);
-  const movies = await client
+  const { name } = request.params;
+  const movie = await client
     .db("b30wd")
     .collection("movies")
-    .find({})
-    .toArray();
-  response.send(movies.name);
+    .findOne({ name: name });
+  response.send(movie);
 });
 
 app.get("/movies/:id", async function (request, response) {
