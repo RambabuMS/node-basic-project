@@ -109,18 +109,6 @@ app.get("/movies", async function (request, response) {
   response.send(movies);
 });
 
-app.get("/movies/name", async function (request, response) {
-  //response.send(movies);
-  const { name } = request.params;
-  console.log(name);
-  const movie = await client
-    .db("b30wd")
-    .collection("movies")
-    .findOne({ name: name });
-  response.send(movie);
-  console.log(movie);
-});
-
 app.get("/movies/:id", async function (request, response) {
   console.log(request.params);
   const { id } = request.params;
