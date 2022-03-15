@@ -85,9 +85,7 @@ const movies = [
 app.use(express.json());
 
 // const MONGO_URL = "mongodb://localhost";
-const MONGO_URL =
-  "mongodb+srv://mongodbsystem:Welcome123@cluster0.hjwz3.mongodb.net";
-
+const MONGO_URL = process.env.MONGO_URL;
 async function createConnection() {
   const client = new MongoClient(MONGO_URL);
   await client.connect();
