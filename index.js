@@ -2,6 +2,7 @@
 import express from "express"; // "type" : "module"
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 console.log(process.env);
@@ -80,6 +81,7 @@ const movies = [
   },
 ];
 
+app.use(cors());
 //middle ware -> Intervept -> converting body to Json
 app.use(express.json());
 
