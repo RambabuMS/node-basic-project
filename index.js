@@ -2,9 +2,9 @@
 import express from "express"; // "type" : "module"
 import { MongoClient } from "mongodb";
 import { moviesRouter } from "./routes/movies.js";
+import { usersRouter } from "./routes/users.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import bcrypt from "bcrypt";
 
 dotenv.config();
 
@@ -104,11 +104,6 @@ app.get("/", function (request, response) {
 
 app.use("/movies", moviesRouter);
 
-app.listen(PORT, () => console.log("Server is started in ", PORT));
+app.use("/users", usersRouter);
 
-async function genPassword(password) {
-  const salt = await bcrypt.genSalt(10);
-  const hashPassword = await bcrypt.hash(password, salt);
-  console.log({ salt, hashPassword });
-}
-genPassword("password@123");
+app.listen(PORT, () => console.log("Server is started in ", PORT));
