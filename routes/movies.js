@@ -1,4 +1,5 @@
 import express from "express";
+import { auth } from "../middleware/auth.js";
 const router = express.Router();
 import {
   createMovies,
@@ -9,13 +10,13 @@ import {
 } from "../helper.js";
 
 // find - cursor - pagination -> convert to Array - toArray();
-router.get("/", async function (request, response) {
+router.get("/", auth, async function (request, response) {
   //response.send(movies);
   const movies = await getAllMovies();
   response.send(movies);
 });
 
-router.get("/:id", async function (request, response) {
+router.get("/:id", auth, async function (request, response) {
   console.log(request.params);
   const { id } = request.params;
   //const movie = movies.find((mv) => mv.id === id);
