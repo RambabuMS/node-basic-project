@@ -25,3 +25,10 @@ export async function getAllMovies() {
 export async function createUser(data) {
   return await client.db("b30wd").collection("users").insertOne(data);
 }
+
+export async function getUserByName(username) {
+  return await client
+    .db("b30wd")
+    .collection("users")
+    .findOne({ username: username });
+}
