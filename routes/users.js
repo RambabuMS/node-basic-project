@@ -48,3 +48,5 @@ router.post("/login", async function (request, response) {
 });
 
 export const usersRouter = router;
+
+// username -> password -> token -> success
